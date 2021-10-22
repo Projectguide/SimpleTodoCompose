@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun Content(tasks: MutableList<Task>, onTaskRemoveAction: (Task) -> Unit) {
+    private fun Content(tasks: List<Task>, onTaskRemoveAction: (Task) -> Unit) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(tasks) { task ->
                 TaskItem(task = task, onTaskRemoveAction = { _task ->
@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
         val taskAddDialogVisible = remember { mutableStateOf(false) }
         TaskAddDialog(
             visible = taskAddDialogVisible,
-            onDoneAction = { taskNameField ->
+            onDoneAction = { taskNameField -> // it
                 onTaskAddAction(Task(name = taskNameField.text, done = false))
             }
         )
